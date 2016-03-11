@@ -27,7 +27,7 @@ module Spree
     end
 
     def fee_adjustments
-      self.adjustments.where( label: 'fee' )
+      self.adjustments.where( label: Spree.t('fee') )
     end
   end
 end
