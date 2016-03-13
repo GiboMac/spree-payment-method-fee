@@ -36,18 +36,18 @@ describe Spree::PaymentMethodFee do
 
     before do
       # create a 'fee' to verify it gets blown away when we call adjust
-      order.adjustments.create amount: 10, label: Spree.t('fee')
+      order.adjustments.create amount: 10, label: 'fee'
       allow(order).to receive(:payment_method).and_return(payment_method)
 
       fee.add_adjustment_to_order(order)
     end
 
     context "with existing fees" do
-      subject { order.adjustments.where(label: Spree.t('fee')) }
+      subject { order.adjustments.where(label: 'fee') }
 
       specify { expect(subject.size).to eq(1) }
       specify { expect(subject.first.amount).to eq(200) }
-      specify { expect(subject.first.label).to eq(Spree.t('fee')) }
+      specify { expect(subject.first.label).to eq('fee') }
     end
   end
 
@@ -61,6 +61,6 @@ describe Spree::PaymentMethodFee do
 
     subject { order }
     specify { expect(subject.adjustments.size).to eq(1) }
-    specify { expect(subject.adjustments.first.label).to eq(Spree.t("fee")) }
+    specify { expect(subject.adjustments.first.label).to eq('fee') }
   end
 end

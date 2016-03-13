@@ -19,7 +19,7 @@ class Spree::PaymentMethodFee < ActiveRecord::Base
     order.adjustments.create! source: order,
                               order: order,
                               amount: self.amount,
-                              label: Spree.t('fee'),
+                              label: 'fee',
                               eligible: true
   end
 end
