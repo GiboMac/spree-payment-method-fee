@@ -3,13 +3,11 @@ module SpreePaymentMethodFee
     class InstallGenerator < Rails::Generators::Base
 
       def add_javascripts
-        append_file 'app/assets/javascripts/store/all.js', "//= require store/spree_payment_method_fee\n"
-        append_file 'app/assets/javascripts/admin/all.js', "//= require admin/spree_payment_method_fee\n"
+        append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/spree_payment_method_fee\n"
       end
 
       def add_stylesheets
-        inject_into_file 'app/assets/stylesheets/store/all.css', " *= require store/spree_payment_method_fee\n", :before => /\*\//, :verbose => true
-        inject_into_file 'app/assets/stylesheets/admin/all.css', " *= require admin/spree_payment_method_fee\n", :before => /\*\//, :verbose => true
+        inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/spree_payment_method_fee\n", :before => /\*\//, :verbose => true
       end
 
       def add_migrations
